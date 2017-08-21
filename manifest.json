@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+
+    "name": "Getting started example",
+    "description": "This extension prevent you from webites known for sharing hoax, lies or theory of conspiracy.",
+    "version": "0.01",
+
+    "browser_action": {
+	"default_icon": "icon.png",
+	"default_popup": "popup.html",
+	"default_title": "Click here!"
+    },
+    "permissions": [
+	"activeTab",
+	"https://ajax.googleapis.com/"
+    ]
+}
