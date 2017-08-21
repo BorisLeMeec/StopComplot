@@ -3,7 +3,7 @@
 
     "name": "StopLiar",
     "description": "This extension prevent you from webites known for sharing hoax, lies or theory of conspiracy.",
-    "version": "0.01",
+    "version": "0.1",
 
     "options_page": "options.html",
 
