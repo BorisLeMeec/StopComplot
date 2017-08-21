@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StopLiar Options</title>
+  </head>
+  <style>
+    li{
+      list-style: none;
+    }
+    .lvl{
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    .ok{
+      color: rgb(63,232,3);
+    }
+    .usersInput{
+      color: rgb(204,150,11);
+    }
+    .complot{
+      color: rgb(213,19,19);
+    }
+    .nonObj{
+      color: rgb(55,139,4);
+    }
+  </style>
+  <body>
+    <h1>StopLiar Options</h1>
+    <div>
+      <ul id="listDomains">
+      </ul>
+    </div>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="BZCMKJBFD7QMS">
+      <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+      <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    <script src="options.js"></script>
+    <script src="jquery.js"></script>
+  </body>
+</html>

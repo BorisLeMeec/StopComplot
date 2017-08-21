@@ -18,12 +18,19 @@ function getCurrentTabUrl(callback) {
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
-
 document.addEventListener('DOMContentLoaded', function() {
+  chrome.runtime.getBackgroundPage(function (w) {
+  });
   getCurrentTabUrl(function(url) {
     var fullUrl = new URL(url)
     var domain = fullUrl.hostname
-
-    renderStatus('Hoax : ' + domain);
+    chrome.storage.sync.get("listDomains", function(datas){
+      for (i = 0; i < datas.listDomains.length; ++i) {
+        var e = datas.listDomains[i];
+        if (e.domain == domain){
+          renderStatus("This domain is " + e.lvl);
+        }
+      };
+    });
   });
 });
