@@ -46,7 +46,7 @@ function updateUrl(url){
   chrome.storage.sync.get("listDomains", function(datas){
     for (i = 0; i < datas.listDomains.length; ++i) {
       var e = datas.listDomains[i];
-      if (url == e.domain){
+      if (url.search(e.domain) != -1){
         var path;
         switch (e.lvl) {
           case "ok":
