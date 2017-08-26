@@ -6,13 +6,14 @@
   <style>
     li{
       list-style: none;
+      border-bottom: 1px solid black;
     }
     .lvl{
       font-weight: bold;
       margin-right: 15px;
     }
     .ok{
-      color: rgb(63,232,3);
+      color: rgb(102,190,33);
     }
     .usersInput{
       color: rgb(204,150,11);
@@ -21,14 +22,35 @@
       color: rgb(213,19,19);
     }
     .nonObj{
-      color: rgb(55,139,4);
+      color: rgb(111,110,9);
+    }
+    .joke{
+      color: rgb(157,2,152);
+    }
+    #listContainer{
+      border: 1px solid black;
+      width: 100%;
+      max-height: 100%
+    }
+    #listDomains{
+      float: left;
+      width: 40%;
+      height: 700px;
+      overflow-y: scroll;
+    }
+    #actions{
+      width: 30%;
     }
   </style>
   <body>
     <h1>StopLiar Options</h1>
-    <div>
+    <div id ="listContainer">
       <ul id="listDomains">
       </ul>
+      <div id="actions">
+        <input type="button" value="+" onclick="addDomain"/>
+        <input type="button" value="-" onclick="delDomain()"/>
+      </div>
     </div>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_s-xclick">

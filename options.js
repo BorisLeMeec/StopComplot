@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var ul = document.getElementById("listDomains");
     for (i = 0; i < datas.listDomains.length; ++i) {
       var e = datas.listDomains[i];
-      var html = $('<li><span class=\"lvl '+e.lvl+'\">['+e.lvl+']</span><span class=\"domain\">'+e.domain+'</span></li>');
+      var html = $('<li><span class=\"domain '+e.lvl+'\">'+e.domain+'</span></li>');
       $("#listDomains").append(html)
     };
   });
 });
+
+function addDomain()
+{
+  console.log("COUCOU");
+}

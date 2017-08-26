@@ -1,16 +1,19 @@
 {
     "manifest_version": 2,
 
-    "name": "StopLiar",
-    "description": "This extension prevent you from webites known for sharing hoax, lies or theory of conspiracy.",
-    "version": "0.1",
+    "name": "IsItFakeNews?",
+    "description": "Cette extension vous previent lorsque vous naviguez sur des sites a tendances complotistes, non objectifs ou parodiques.",
+    "version": "0.2",
 
     "options_page": "options.html",
-
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+      },
     "browser_action": {
-	     "default_icon": "IconGood.png",
+	     "default_icon": "icons/unknown.png",
 	     "default_popup": "popup.html",
-	     "default_title": "Click here!"
+	     "default_title": "IsItFakeNews?"
     },
     "background": {
       "scripts": [

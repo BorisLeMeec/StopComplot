@@ -1,5 +1,4 @@
 chrome.runtime.onInstalled.addListener(function(o){
-  console.log("Install StopComplot");
   var sheetID = "https://docs.google.com/spreadsheets/d/1FWp879VjaBzrcZXYKTMpxKba1KXNNXlBI2hSSAigx4s/pub?output=csv";
   var sites = [];
   $.get(sheetID, function(data){
@@ -11,26 +10,26 @@ chrome.runtime.onInstalled.addListener(function(o){
        },
 	     complete: function() {
          chrome.storage.sync.set({"listDomains":sites}, function(){
-           console.log("Synced.");
          });
-         console.log("Done.");
          chrome.storage.sync.get("listDomains", function(datas){
-           console.log(datas);
          });
 	     }
     });
   })
   // chrome.runtime.openOptionsPage();
+  // chrome.tabs.create({url: "http://yoursite.com/"}, function (tab) {
+  //       console.log("New tab launched with http://yoursite.com/");
+  //   });
 });
 
 chrome.tabs.onActivated.addListener(function(activeInfos){
   var url;
 
   chrome.tabs.query({"active": true}, function(tabs){
-    if (tabs[0].url){
+    var url = "";
+    if (tabs[0].url)
       url = new URL(tabs[0].url).hostname;
-      updateUrl(url);
-    }
+    updateUrl(url);
   });
   chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab){
     if (activeInfos.tabId == tabId){
@@ -44,26 +43,33 @@ chrome.tabs.onActivated.addListener(function(activeInfos){
 
 function updateUrl(url){
   chrome.storage.sync.get("listDomains", function(datas){
+    var found = false;
+    var title = "Ce site n'est pas dans notre base de données.";
+    chrome.browserAction.setIcon({path: "icons/unknown.png"});
     for (i = 0; i < datas.listDomains.length; ++i) {
       var e = datas.listDomains[i];
       if (url.search(e.domain) != -1){
-        var path;
+        found = true;
         switch (e.lvl) {
           case "ok":
-            path = "IconGood.png";
+            title = "Ce site est vérifié, l'information y est sûre.";
             break;
           case "complot":
-            path = "IconBad.png";
+            title = "Ce site est connu pour diffuser de fausses infos et des théories du complot.";
             break;
           case "usersInput":
-            path = "IconUserInput.png";
+            title = "Attention, ce site contient du contenu écrit par les utilisateurs, faites attention.";
             break;
           case "nonObj":
-            path = "IconNoObj.png";
+            title = "Ce site est connu pour ne pas être objectif, l'info n'y est pas forcément fausse pour atant.";
+            break;
+          case "joke":
+            title = "Ce site est humoristique, ne vous trompez pas ;)";
             break;
         }
-        chrome.browserAction.setIcon({path: path});
+        chrome.browserAction.setIcon({path: 'icons/'+e.lvl+'.png'});
       }
     };
+    chrome.browserAction.setTitle({title :title});
   })
 };
