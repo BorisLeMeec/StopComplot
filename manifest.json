@@ -23,6 +23,7 @@
       ],
       "persistent": false
     },
+    "default_locale": "fr",
     "permissions": [
 	     "activeTab",
        "storage",

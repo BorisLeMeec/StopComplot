@@ -15,4 +15,10 @@ function renderStatus(statusText) {
 document.addEventListener('DOMContentLoaded', function() {
   chrome.runtime.getBackgroundPage(function (w) {
   });
+  document.getElementById('link_options').onclick = openOptionsPage;
 });
+
+
+function openOptionsPage(){
+  chrome.runtime.openOptionsPage();
+}

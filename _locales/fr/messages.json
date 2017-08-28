@@ -1,0 +1,29 @@
+{
+  "extName": {
+    "message": "IsItFakeNews?"
+  },
+  "msgInfo_ok": {
+    "message": "Ce site est vérifié, l'information y est sûre."
+  },
+  "msgInfo_complot": {
+    "message": "Ce site est connu pour diffuser de fausses infos et des théories du complot."
+  },
+  "msgInfo_usersInput": {
+    "message": "Attention, ce site contient du contenu écrit par les utilisateurs, faites attention."
+  },
+  "msgInfo_nonObj": {
+    "message": "Ce site est connu pour ne pas être objectif, l'info n'y est pas forcément fausse pour atant."
+  },
+  "msgInfo_joke": {
+    "message": "Ce site est humoristique, ne vous trompez pas ;)"
+  },
+  "msgInfo_unknown": {
+    "message": "Ce site n'est pas dans notre base de données."
+  },
+  "linkAddDomain": {
+    "message": "+Ajouter"
+  },
+  "linkChangeDomain": {
+    "message": "Modifier"
+  }
+}

@@ -44,32 +44,16 @@ chrome.tabs.onActivated.addListener(function(activeInfos){
 function updateUrl(url){
   chrome.storage.sync.get("listDomains", function(datas){
     var found = false;
-    var title = "Ce site n'est pas dans notre base de données.";
+    var title = chrome.i18n.getMessage("msgInfo_unknown");
     chrome.browserAction.setIcon({path: "icons/unknown.png"});
     for (i = 0; i < datas.listDomains.length; ++i) {
       var e = datas.listDomains[i];
       if (url.search(e.domain) != -1){
         found = true;
-        switch (e.lvl) {
-          case "ok":
-            title = "Ce site est vérifié, l'information y est sûre.";
-            break;
-          case "complot":
-            title = "Ce site est connu pour diffuser de fausses infos et des théories du complot.";
-            break;
-          case "usersInput":
-            title = "Attention, ce site contient du contenu écrit par les utilisateurs, faites attention.";
-            break;
-          case "nonObj":
-            title = "Ce site est connu pour ne pas être objectif, l'info n'y est pas forcément fausse pour atant.";
-            break;
-          case "joke":
-            title = "Ce site est humoristique, ne vous trompez pas ;)";
-            break;
-        }
+        title = chrome.i18n.getMessage("msgInfo_"+e.lvl);
         chrome.browserAction.setIcon({path: 'icons/'+e.lvl+'.png'});
       }
-    };
+    }
     chrome.browserAction.setTitle({title :title});
-  })
+  });
 };
